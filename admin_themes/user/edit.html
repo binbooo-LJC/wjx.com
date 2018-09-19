@@ -1,0 +1,77 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/user/index')}">用户管理</a></li>
+            <li class=""><a href="{:url('admin/user/add')}">添加用户</a></li>
+            <li class="layui-this">编辑用户</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/user/update')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" value="{$user.username}" required  lay-verify="required" placeholder="请输入用户名" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="mobile" value="{$user.mobile}" placeholder="（选填）请输入手机" required lay-verify="required" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">余额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="balance" value="{$user.balance}" placeholder="卡内余额" class="layui-input" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">微信号</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="wx_code" value="{$user.wx_code}" placeholder="（选填）请输入微信号" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">充值金额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="recharge" value="{$user.wx_code}" placeholder="（选填）请输入金额" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">充值套餐</label>
+                        <div class="layui-input-block">
+                            {foreach name="deposit_type" item="vo"}
+                            <input type="radio" name="type" value="{$vo.id}" title="{$vo.name}" >
+                            {/foreach}
+                            <input type="radio" name="type" value="0" title="无套餐" checked>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">付款方式</label>
+                        <div class="layui-input-block">
+                            {foreach name='pay' item='vo'}
+                            {if condition="$vo.id eq 1"/}
+                            <input type="radio" name="pay" value="{$vo.id}" title="{$vo.name}"  >
+                            {else/}
+                            <input type="radio" name="pay" value="{$vo.id}" title="{$vo.name}"  >
+                            {/if}
+                            {/foreach}
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="hidden" name="id" value="{$user.id}">
+                            <button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

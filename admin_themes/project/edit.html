@@ -1,0 +1,67 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/project/index')}">项目管理</a></li>
+            <li class=""><a href="{:url('admin/project/add')}">添加项目</a></li>
+            <li class="layui-this">编辑项目</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/project/update')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">项目名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" value="{$project.name}" required  lay-verify="required" placeholder="请输入项目名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">金额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="money" value="{$project.money}" required  lay-verify="required" placeholder="请输入项目金额" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">周期</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="cyc" value="{$project.cyc}" required  lay-verify="required" placeholder="请输入项目周期" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            {if condition="$project.statue eq 1"}
+                            <input type="radio" name="statue" value="1" title="启用"  checked>
+                            <input type="radio" name="statue" value="0" title="弃用">
+                            {else /}
+                            <input type="radio" name="statue" value="1" title="启用">
+                            <input type="radio" name="statue" value="0" title="弃用" checked>
+                            {/if}
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="hidden" name="id" value="{$project.id}">
+                            <button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/kindeditor/kindeditor.config.js"></script>
+<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    KindEditor.ready(function(K) {
+        K.create('#content', KindEditorOptions);
+    });
+</script>
+{/block}

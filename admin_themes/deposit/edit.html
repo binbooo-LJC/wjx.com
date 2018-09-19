@@ -1,0 +1,90 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/deposit/index')}">套餐管理</a></li>
+            <li class=""><a href="{:url('admin/deposit/add')}">添加套餐</a></li>
+            <li class="layui-this">编辑套餐</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/deposit/update')}" method="post">
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">套餐名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="name" value="{$deposit.name}" required  lay-verify="required" placeholder="请输入套餐名称" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">充值金额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="premoney" value="{$deposit.premoney}" required  lay-verify="required" placeholder="请输入充值金额" class="layui-input">
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">套餐金额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="money" value="{$deposit.money}" required  lay-verify="required" placeholder="请输入套餐金额" class="layui-input">
+                        </div>
+
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="statue" value="1" title="启用" {if condition="$deposit.statue==1" } checked="checked" {/if} >
+                            <input type="radio" name="statue" value="0" title="弃用" {if condition="$deposit.statue==0"} checked="checked"{/if}>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <input type="hidden" name="id" value="{$deposit.id}">
+                            <button class="layui-btn" lay-submit lay-filter="*">更新</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
+{block name="js"}
+<script src="__JS__/kindeditor/kindeditor.config.js"></script>
+<script src="__JS__/kindeditor/kindeditor-all-min.js"></script>
+{/block}
+{block name="script"}
+<script>
+    $(document).ready(function () {
+        var _kindEditor;
+        KindEditor.ready(function(K) {
+            _kindEditor = K.create('#content', KindEditorOptions);
+
+            K('#upload-photo-btn').click(function () {
+                var photo_list_item = '';
+                _kindEditor.loadPlugin('multiimage', function() {
+                    _kindEditor.plugin.multiImageDialog({
+                        showRemote : false,
+                        imageUrl : K('#photo').val(),
+                        clickFn : function(data) {
+                            $.each(data, function (index, item) {
+                                photo_list_item += '<div class="photo-list"><input type="text" name="photo[]" value="' + item.url + '" class="layui-input layui-input-inline">';
+                                photo_list_item += '<button type="button" class="layui-btn layui-btn-danger remove-photo-btn">移除</button></div>'
+                            });
+                            $('#photo-container').append(photo_list_item);
+                            _kindEditor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+
+        $('#photo-container').on('click', '.remove-photo-btn', function () {
+            $(this).parent('.photo-list').remove();
+        });
+    });
+</script>
+{/block}

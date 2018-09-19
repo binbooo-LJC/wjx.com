@@ -1,0 +1,58 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">消费记录</li>
+            <li class=""><a href="{:url('admin/user/addbill',['id'=>$id])}">添加消费记录</a></li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" action="{:url('admin/user/userbill',['id'=>$id])}" method="get">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">消费项目</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                </form>
+                <hr>
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th>会员姓名</th>
+                        <th>手机号</th>
+                        <th>消费项目</th>
+                        <th>金额</th>
+                        <th>是否免单</th>
+                        <th>时间</th>
+                        <th>备注</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.mobile}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.money}</td>
+                        <td>{if condition="$vo.no_bill eq 1"}否{else /}是{/if}</td>
+                        <td>{$vo.creat_time}</td>
+                        <td>{$vo.mark}</td>
+
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                <!--分页-->
+                {$list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

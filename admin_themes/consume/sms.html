@@ -1,0 +1,73 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">短信提醒</li>
+        </ul>
+        <div class="layui-tab-content">
+
+            <form class="layui-form layui-form-pane" action="{:url('admin/consume/sms')}" method="get">
+
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" style="width: 180px">是否显示发送短信</label>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" name="statue" lay-skin="switch" lay-text="开启|关闭" {eq name="$statue" value="on"} checked {/eq}>
+                        <!--<input type="checkbox" name="statue" lay-skin="switch" lay-text="1|0" >-->
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button class="layui-btn">搜索</button>
+                </div>
+            </form>
+            <hr>
+
+            <form action="" method="post" class="ajax-form">
+                <button type="button" class="layui-btn layui-btn-small ajax-action" data-action="{:url('admin/sms/toggle',['type'=>'audit'])}">发送短信</button>
+                <!--<button type="button" class="layui-btn layui-btn-warm layui-btn-small ajax-action" data-action="{:url('admin/article/toggle',['type'=>'cancel_audit'])}">取消审核</button>-->
+
+                <div class="layui-tab-item layui-show">
+                    <table class="layui-table">
+                        <thead>
+                        <tr>
+                            <th style="width: 15px;"><input type="checkbox" class="check-all"></th>
+                            <th style="width: 30px;">ID</th>
+                            <th>会员名</th>
+                            <th>手机号</th>
+                            <th>上次消费项目</th>
+                            <th>消费时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {foreach name="list" item="vo"}
+                        <tr {gt name="$vo.smsNum" value="0"} style="background-color: #8a6d3b"{/gt}>
+                            <td><input type="checkbox" name="ids[]" value="{$vo.id}"></td>
+                            <td>{$vo.id}</td>
+                            <td>{$vo.username}</td>
+                            <td>{$vo.mobile}</td>
+                            <td>{$vo.project_name}</td>
+                            <td>{$vo.creat_time}</td>
+                            <td>
+                                <a href="{:url('admin/sms/index',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini" >发送短信({$vo.smsNum}次)</a>
+
+                            </td>
+                        </tr>
+                        {/foreach}
+                        </tbody>
+                    </table>
+                    {$list->render()}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{/block}

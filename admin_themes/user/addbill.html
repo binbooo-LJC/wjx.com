@@ -1,0 +1,61 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class=""><a href="{:url('admin/user/userbill',['id'=>$id])}">消费记录</a></li>
+            <li class=""><a href="{:url('admin/user/edit',['id'=>$id])}">余额充值</a></li>
+            <li class="layui-this">添加记录</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form form-container" action="{:url('admin/user/savebill',['id'=>$id])}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">会员名</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="username" value="{$user.username}" required lay-verify="required" placeholder="请输入会员名" class="layui-input" disabled>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账户余额</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="balance" value="{$user.balance}" required lay-verify="required" placeholder="请输入会员名" class="layui-input" disabled>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">消费项目</label>
+                        <div class="layui-input-block">
+                            {foreach name='project' item='vo'}
+                            <input type="checkbox" name="consume[{$vo.name}]"  value="{$vo.id}" title="{$vo.name}">
+                            {/foreach}
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">免单项目</label>
+                        <div class="layui-input-block">
+                            {foreach name='project' item='vo'}
+                            <input type="checkbox" name="bill[{$vo.name}]" value="{$vo.id}" title="{$vo.name}">
+                            {/foreach}
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-block">
+                            <textarea name="mark" placeholder="50字以内"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

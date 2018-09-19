@@ -1,0 +1,66 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">充值记录</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form layui-form-pane" action="{:url('admin/recharge/index')}" method="get">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$keyword}" placeholder="请输入关键词" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">年月选择器</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input datetime" name="date" value="{$date}" placeholder="{$date}">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="layui-btn">搜索</button>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">总收入</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" value="{$sum}"  disabled class="layui-input">
+                        </div>
+                    </div>
+
+                </form>
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th>会员名称</th>
+                        <th>联系方式</th>
+                        <th>充值金额</th>
+                        <th>套餐类型</th>
+                        <th>充值方式</th>
+                        <th>时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.username}</td>
+                        <td>{$vo.mobile}</td>
+                        <td>{$vo.money}</td>
+                        <td>{$vo.type?$vo.deposit:'无套餐'}</td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.time}</td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+                {$list->render()}
+            </div>
+        </div>
+    </div>
+</div>
+{/block}
