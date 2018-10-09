@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50553
-Source Host           : 127.0.0.1:3306
+Source Server         : localhost_3306
+Source Server Version : 50711
+Source Host           : localhost:3306
 Source Database       : think_admin
 
 Target Server Type    : MYSQL
-Target Server Version : 50553
+Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2016-12-29 16:45:16
+Date: 2018-10-09 14:07:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,7 @@ CREATE TABLE `think_admin_user` (
 -- ----------------------------
 -- Records of think_admin_user
 -- ----------------------------
-INSERT INTO `think_admin_user` VALUES ('1', 'admin', '0dfc7612f607db6c17fd99388e9e5f9c', '1', '2016-10-18 15:28:37', '2016-12-29 11:04:52', '127.0.0.1');
+INSERT INTO `think_admin_user` VALUES ('1', 'admin', 'c28c76b1ba7b150ce0cd878e4b22f639', '1', '2016-10-18 15:28:37', '2018-09-19 14:40:37', '127.0.0.1');
 
 -- ----------------------------
 -- Table structure for think_article
@@ -118,8 +118,6 @@ CREATE TABLE `think_auth_rule` (
 -- Records of think_auth_rule
 -- ----------------------------
 INSERT INTO `think_auth_rule` VALUES ('1', 'admin/System/default', '系统配置', '1', '1', '0', 'fa fa-gears', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('2', 'admin/System/siteConfig', '站点配置', '1', '1', '1', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('3', 'admin/System/updateSiteConfig', '更新配置', '1', '0', '1', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('5', 'admin/Menu/default', '菜单管理', '1', '1', '0', 'fa fa-bars', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('6', 'admin/Menu/index', '后台菜单', '1', '1', '5', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('7', 'admin/Menu/add', '添加菜单', '1', '0', '6', '', '0', '');
@@ -127,14 +125,13 @@ INSERT INTO `think_auth_rule` VALUES ('8', 'admin/Menu/save', '保存菜单', '1
 INSERT INTO `think_auth_rule` VALUES ('9', 'admin/Menu/edit', '编辑菜单', '1', '0', '6', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('10', 'admin/Menu/update', '更新菜单', '1', '0', '6', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('11', 'admin/Menu/delete', '删除菜单', '1', '0', '6', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('12', 'admin/Nav/index', '导航管理', '1', '1', '5', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('13', 'admin/Category/index', '栏目管理', '1', '1', '14', 'fa fa-sitemap', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('14', 'admin/Content/default', '内容管理', '1', '1', '0', 'fa fa-file-text', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('15', 'admin/Article/index', '文章管理', '1', '1', '14', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('16', 'admin/User/default', '用户管理', '1', '1', '0', 'fa fa-users', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('17', 'admin/User/index', '普通用户', '1', '1', '16', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('18', 'admin/AdminUser/index', '管理员', '1', '1', '16', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('19', 'admin/AuthGroup/index', '权限组', '1', '1', '16', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('13', 'admin/project/index', '项目列表', '1', '1', '14', 'fa fa-sitemap', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('14', 'admin/Content/default', '项目管理', '1', '1', '0', 'fa fa-file-text', '56', '');
+INSERT INTO `think_auth_rule` VALUES ('15', 'admin/deposit/index', '套餐管理', '1', '1', '14', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('16', 'admin/User/default', '用户管理', '1', '1', '0', 'fa fa-users', '99', '');
+INSERT INTO `think_auth_rule` VALUES ('17', 'admin/User/index', '会员vip', '1', '1', '16', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('18', 'admin/AdminUser/index', '管理员', '1', '0', '16', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('19', 'admin/AuthGroup/index', '权限组', '1', '0', '16', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('20', 'admin/Category/add', '添加栏目', '1', '0', '13', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('21', 'admin/Category/save', '保存栏目', '1', '0', '13', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('22', 'admin/Category/edit', '编辑栏目', '1', '0', '13', '', '0', '');
@@ -153,11 +150,6 @@ INSERT INTO `think_auth_rule` VALUES ('34', 'admin/AuthGroup/update', '更新权
 INSERT INTO `think_auth_rule` VALUES ('35', 'admin/AuthGroup/delete', '删除权限组', '1', '0', '19', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('36', 'admin/AuthGroup/auth', '授权', '1', '0', '19', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('37', 'admin/AuthGroup/updateAuthGroupRule', '更新权限组规则', '1', '0', '19', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('39', 'admin/Nav/add', '添加导航', '1', '0', '12', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('40', 'admin/Nav/save', '保存导航', '1', '0', '12', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('41', 'admin/Nav/edit', '编辑导航', '1', '0', '12', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('42', 'admin/Nav/update', '更新导航', '1', '0', '12', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('43', 'admin/Nav/delete', '删除导航', '1', '0', '12', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('44', 'admin/User/add', '添加用户', '1', '0', '17', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('45', 'admin/User/save', '保存用户', '1', '0', '17', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('46', 'admin/User/edit', '编辑用户', '1', '0', '17', '', '0', '');
@@ -168,10 +160,10 @@ INSERT INTO `think_auth_rule` VALUES ('50', 'admin/AdminUser/save', '保存管�
 INSERT INTO `think_auth_rule` VALUES ('51', 'admin/AdminUser/edit', '编辑管理员', '1', '0', '18', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('52', 'admin/AdminUser/update', '更新管理员', '1', '0', '18', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('53', 'admin/AdminUser/delete', '删除管理员', '1', '0', '18', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('54', 'admin/Slide/default', '扩展管理', '1', '1', '0', 'fa fa-wrench', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('55', 'admin/SlideCategory/index', '轮播分类', '1', '1', '54', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('56', 'admin/Slide/index', '轮播图管理', '1', '1', '54', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('57', 'admin/Link/index', '友情链接', '1', '1', '54', 'fa fa-link', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('54', 'admin/Slide/default', '流水账单', '1', '1', '0', 'fa fa-wrench', '55', '');
+INSERT INTO `think_auth_rule` VALUES ('55', 'admin/consume/sms', '短信通知', '1', '1', '54', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('56', 'admin/recharge/index', '充值记录', '1', '1', '54', '', '0', '');
+INSERT INTO `think_auth_rule` VALUES ('57', 'admin/Consume/index', '账单统计', '1', '1', '54', 'fa fa-link', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('58', 'admin/SlideCategory/add', '添加分类', '1', '0', '55', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('59', 'admin/SlideCategory/save', '保存分类', '1', '0', '55', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('60', 'admin/SlideCategory/edit', '编辑分类', '1', '0', '55', '', '0', '');
@@ -188,7 +180,6 @@ INSERT INTO `think_auth_rule` VALUES ('70', 'admin/Link/edit', '编辑链接', '
 INSERT INTO `think_auth_rule` VALUES ('71', 'admin/Link/update', '更新链接', '1', '0', '57', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('72', 'admin/Link/delete', '删除链接', '1', '0', '57', '', '0', '');
 INSERT INTO `think_auth_rule` VALUES ('73', 'admin/ChangePassword/index', '修改密码', '1', '1', '1', '', '0', '');
-INSERT INTO `think_auth_rule` VALUES ('74', 'admin/ChangePassword/updatePassword', '更新密码', '1', '0', '1', '', '0', '');
 
 -- ----------------------------
 -- Table structure for think_category
@@ -215,6 +206,53 @@ CREATE TABLE `think_category` (
 -- Records of think_category
 -- ----------------------------
 INSERT INTO `think_category` VALUES ('1', '分类一', '', '', '', '', '', '', '1', '0', '0', '0,', '2016-12-22 18:22:24');
+
+-- ----------------------------
+-- Table structure for think_consume
+-- ----------------------------
+DROP TABLE IF EXISTS `think_consume`;
+CREATE TABLE `think_consume` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL COMMENT '外键 user表',
+  `project` int(2) NOT NULL COMMENT '外键 project',
+  `no_bill` int(1) NOT NULL COMMENT 'no_bill 0 免单 1：不免单',
+  `creat_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `mark` char(50) DEFAULT NULL COMMENT '备注',
+  `cyctime` date NOT NULL COMMENT '下去需要做项目时间',
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  KEY `creat_time` (`creat_time`),
+  CONSTRAINT `think_consume_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `think_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_consume
+-- ----------------------------
+INSERT INTO `think_consume` VALUES ('91', '56', '2', '1', '2018-07-20 16:27:11', null, '2018-04-26');
+INSERT INTO `think_consume` VALUES ('92', '57', '1', '0', '2018-07-20 16:27:26', null, '2018-07-27');
+INSERT INTO `think_consume` VALUES ('93', '58', '2', '0', '2018-07-20 16:27:34', null, '2018-07-28');
+INSERT INTO `think_consume` VALUES ('94', '60', '1', '0', '2018-07-20 16:27:44', null, '2018-03-14');
+INSERT INTO `think_consume` VALUES ('95', '60', '2', '1', '2018-07-20 17:03:19', null, '2018-07-11');
+INSERT INTO `think_consume` VALUES ('96', '63', '2', '0', '2018-07-20 17:29:54', null, '2018-08-03');
+
+-- ----------------------------
+-- Table structure for think_deposit_type
+-- ----------------------------
+DROP TABLE IF EXISTS `think_deposit_type`;
+CREATE TABLE `think_deposit_type` (
+  `id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(20) NOT NULL,
+  `premoney` int(5) NOT NULL COMMENT '原本金额',
+  `money` int(6) NOT NULL,
+  `statue` int(1) DEFAULT '1' COMMENT '1:启用 0 弃用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_deposit_type
+-- ----------------------------
+INSERT INTO `think_deposit_type` VALUES ('1', '充值500送首次小奇泡免单', '500', '500', '0');
+INSERT INTO `think_deposit_type` VALUES ('2', '充值1000送200', '1000', '1200', '1');
 
 -- ----------------------------
 -- Table structure for think_link
@@ -256,6 +294,88 @@ CREATE TABLE `think_nav` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for think_pay
+-- ----------------------------
+DROP TABLE IF EXISTS `think_pay`;
+CREATE TABLE `think_pay` (
+  `id` int(1) unsigned NOT NULL AUTO_INCREMENT,
+  `name` char(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_pay
+-- ----------------------------
+INSERT INTO `think_pay` VALUES ('1', '微信');
+INSERT INTO `think_pay` VALUES ('2', '支付宝');
+INSERT INTO `think_pay` VALUES ('3', '现金');
+
+-- ----------------------------
+-- Table structure for think_project
+-- ----------------------------
+DROP TABLE IF EXISTS `think_project`;
+CREATE TABLE `think_project` (
+  `id` int(2) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL COMMENT '项目名称',
+  `money` char(4) NOT NULL COMMENT '金额',
+  `cyc` int(2) DEFAULT '0' COMMENT '项目周期',
+  `statue` int(1) NOT NULL DEFAULT '1' COMMENT '1:启用 0 弃用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_project
+-- ----------------------------
+INSERT INTO `think_project` VALUES ('1', '小气泡', '68', '7', '0');
+INSERT INTO `think_project` VALUES ('2', '美白亮肤', '88', '14', '1');
+
+-- ----------------------------
+-- Table structure for think_recharge
+-- ----------------------------
+DROP TABLE IF EXISTS `think_recharge`;
+CREATE TABLE `think_recharge` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `user_id` int(5) NOT NULL,
+  `money` int(5) NOT NULL,
+  `type` int(1) DEFAULT '0' COMMENT '充值类型',
+  `pay` int(11) DEFAULT '1' COMMENT '付款方式',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `oder_time` (`time`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `think_recharge_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `think_user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_recharge
+-- ----------------------------
+INSERT INTO `think_recharge` VALUES ('4', '56', '1000', '0', '0', '2018-07-16 16:30:18');
+INSERT INTO `think_recharge` VALUES ('5', '57', '1000', '2', '1', '2018-07-16 16:46:45');
+INSERT INTO `think_recharge` VALUES ('6', '58', '1000', '2', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('8', '58', '101', '0', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('9', '58', '1000', '2', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('10', '58', '1000', '2', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('11', '58', '1000', '2', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('12', '58', '100', '0', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('13', '58', '100', '0', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('14', '59', '1000', '0', '1', '2018-07-17 14:50:37');
+INSERT INTO `think_recharge` VALUES ('15', '60', '20', '0', '1', '2018-07-17 15:14:27');
+INSERT INTO `think_recharge` VALUES ('16', '62', '1000', '0', '1', '2018-07-17 15:25:39');
+INSERT INTO `think_recharge` VALUES ('17', '63', '1000', '0', '1', '2018-07-17 15:26:36');
+INSERT INTO `think_recharge` VALUES ('18', '63', '1000', '0', '1', '2018-07-17 15:27:14');
+INSERT INTO `think_recharge` VALUES ('19', '63', '1000', '0', '1', '2018-07-17 15:27:14');
+INSERT INTO `think_recharge` VALUES ('20', '63', '1000', '2', '1', '2018-07-17 15:28:39');
+INSERT INTO `think_recharge` VALUES ('21', '63', '1000', '2', '1', '2018-07-17 15:28:39');
+INSERT INTO `think_recharge` VALUES ('22', '63', '1000', '0', '1', '2018-07-17 15:29:09');
+INSERT INTO `think_recharge` VALUES ('23', '63', '1000', '0', '1', '2018-07-17 15:29:10');
+INSERT INTO `think_recharge` VALUES ('24', '63', '1000', '2', '1', '2018-07-17 15:29:20');
+INSERT INTO `think_recharge` VALUES ('25', '63', '1000', '2', '1', '2018-07-17 15:29:20');
+INSERT INTO `think_recharge` VALUES ('26', '63', '1000', '0', '1', '2018-07-17 15:41:48');
+INSERT INTO `think_recharge` VALUES ('27', '63', '1000', '0', '1', '2018-07-17 15:41:48');
+INSERT INTO `think_recharge` VALUES ('28', '63', '1000', '2', '1', '2018-06-13 15:42:10');
+INSERT INTO `think_recharge` VALUES ('29', '63', '1000', '2', '1', '2018-07-17 15:42:10');
+
+-- ----------------------------
 -- Table structure for think_slide
 -- ----------------------------
 DROP TABLE IF EXISTS `think_slide`;
@@ -292,6 +412,24 @@ CREATE TABLE `think_slide_category` (
 INSERT INTO `think_slide_category` VALUES ('1', '首页轮播');
 
 -- ----------------------------
+-- Table structure for think_sms
+-- ----------------------------
+DROP TABLE IF EXISTS `think_sms`;
+CREATE TABLE `think_sms` (
+  `id` int(5) NOT NULL AUTO_INCREMENT,
+  `consumeId` int(5) NOT NULL,
+  `mobile` varchar(11) NOT NULL,
+  `statue` int(1) DEFAULT '1',
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of think_sms
+-- ----------------------------
+INSERT INTO `think_sms` VALUES ('1', '95', '13366659939', '1', '2018-09-19 14:43:58');
+
+-- ----------------------------
 -- Table structure for think_system
 -- ----------------------------
 DROP TABLE IF EXISTS `think_system`;
@@ -312,19 +450,26 @@ INSERT INTO `think_system` VALUES ('1', 'site_config', 'a:7:{s:10:\"site_title\"
 -- ----------------------------
 DROP TABLE IF EXISTS `think_user`;
 CREATE TABLE `think_user` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL COMMENT '用户名',
-  `password` varchar(50) NOT NULL COMMENT '密码',
-  `mobile` varchar(11) DEFAULT '' COMMENT '手机',
-  `email` varchar(50) DEFAULT '' COMMENT '邮箱',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '用户状态  1 正常  2 禁止',
+  `mobile` varchar(12) DEFAULT '' COMMENT '手机',
+  `wx_code` char(50) DEFAULT NULL COMMENT '微信号',
+  `balance` smallint(5) DEFAULT NULL COMMENT '余额',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
-  `last_login_time` datetime DEFAULT NULL COMMENT '最后登陆时间',
-  `last_login_ip` varchar(50) DEFAULT '' COMMENT '最后登录IP',
+  `last_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后消费时间',
+  `mark` char(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户表';
+  KEY `mobile` (`mobile`),
+  KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of think_user
 -- ----------------------------
+INSERT INTO `think_user` VALUES ('56', '王金显', '18146538675', '', '1112', '2018-07-16 16:30:18', '2018-07-24 14:24:12', '');
+INSERT INTO `think_user` VALUES ('57', '13366659939', '18539981367', '', '1200', '2018-07-16 16:46:44', '2018-07-16 16:46:44', '');
+INSERT INTO `think_user` VALUES ('58', 'li', '18539981367', '', '2500', '2018-07-16 16:48:06', '2018-07-17 11:49:04', '');
+INSERT INTO `think_user` VALUES ('59', '3294814380@qq.com', '18539981367', '', '1000', '2018-07-17 14:50:37', '2018-07-17 14:50:37', '');
+INSERT INTO `think_user` VALUES ('60', '李金城', '13366659939', '', '20', '2018-07-17 15:14:26', '2018-09-19 14:43:37', '');
+INSERT INTO `think_user` VALUES ('62', '91xiaoxuesheng91', '18539981367', '', '1000', '2018-07-17 15:25:39', '2018-07-17 15:25:39', '');
+INSERT INTO `think_user` VALUES ('63', '18637626031', '18539981367', '', '7600', '2018-07-17 15:26:36', '2018-07-17 15:42:10', '');

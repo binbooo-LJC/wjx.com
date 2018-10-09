@@ -5,14 +5,14 @@ use think\Controller;
 use think\Db;
 use sms\Sms as Message;
 class Sms extends Controller{
-    protected $str= "尊敬的%s您好，您于上次%s做的%s项目建议周期为%s天一次，抽空请和我预约【金子美妍】";
+    protected $str= "尊敬的%s用户对您的产品很感兴趣，请及时联系【金子美妍】";
     public function index($id){
         $map['a.id']=$id;
         $user_info=Db::name('consume')->alias('a')->join('think_user b','a.user_id=b.id')->join('think_project c','a.project=c.id')->where($map)->field('a.creat_time,b.username,c.name,c.cyc,b.mobile')->find();
         if($user_info){
             $class=new Message(array('api_key' => 'c24b2635d052b39b5025811688869a8c' , 'use_ssl' => FALSE ));
 //           $str= "尊敬的%s您好，您于上次%s做的%s项目建议周期为%s天一次，抽空请和我预约【金子美妍】";
-           $sendmsg= sprintf($this->str,$user_info['username'],$user_info['creat_time'],$user_info['name'],$user_info['cyc']);
+           $sendmsg= sprintf($this->str,$user_info['mobile']);
             $res = $class->send( $user_info['mobile'], $sendmsg);
             if( $res ){
                 if( isset( $res['error'] ) &&  $res['error'] == 0 ){
